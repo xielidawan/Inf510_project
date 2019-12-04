@@ -1,0 +1,11 @@
+This program will let you call from terminal, with --remote or --local.
+
+--local : call the database("weather.db") in the computer, and get into the program
+
+--remote : get the data online and store all the data into a database, called "weather.db". then, go to the program.
+
+
+Main Part: 
+
+For the main part, there has two choices, one is go deep into the program and play with it. 
+Second, going into the report part. 
