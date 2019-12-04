@@ -7,5 +7,4 @@ This program will let you call from terminal, with --remote or --local.
 
 Main Part: 
 
-For the main part, there has two choices, one is go deep into the program and play with it. 
-Second, going into the report part. 
+For the main part, there has two choices, one is go deep into the program and play with it. Second, going into the report part. 
