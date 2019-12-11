@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 import argparse
 import time
 
+
 ######################################### Data Getting and Management Part ##############################################
 
 
@@ -1106,7 +1107,7 @@ class data_shows():
         day_weather = t1.fetchall()[0]
 
         for i in range(1, len(day_weather)):
-            print(f"\n\nDAY {i-1}\n    weather summary: ", day_summary[i], f"\n    weather: ", day_weather[i])
+            print(f"\n\nDAY {i - 1}\n    weather summary: ", day_summary[i], f"\n    weather: ", day_weather[i])
 
     def shows_temp(self, p_id):
         # max and min temp for each day
@@ -1115,7 +1116,7 @@ class data_shows():
         day_temp = t.fetchall()[0]
         for i in range(1, len(day_temp)):
             if i % 2 != 0:
-                print(f"\n\nDay {int(i/2 - 0.5)} \nMin Temperature: ", day_temp[i])
+                print(f"\n\nDay {int(i / 2 - 0.5)} \nMin Temperature: ", day_temp[i])
             else:
                 print(f"Max Temperature: ", day_temp[i])
 
@@ -1126,7 +1127,7 @@ class data_shows():
         day_temp = t.fetchall()[0]
         for i in range(1, len(day_temp)):
             if i % 2 != 0:
-                print(f"\n\nDay {int(i/2 - 0.5)} \nWind Speed: ", day_temp[i])
+                print(f"\n\nDay {int(i / 2 - 0.5)} \nWind Speed: ", day_temp[i])
             else:
                 print(f"Direction : ", day_temp[i])
 
@@ -1137,7 +1138,7 @@ class data_shows():
         day_humi = t.fetchall()[0]
 
         for i in range(1, len(day_humi)):
-            print(f"\n\nDAY {i-1}\n    Humidity: ", day_humi[i])
+            print(f"\n\nDAY {i - 1}\n    Humidity: ", day_humi[i])
 
     def shows_visi(self, p_id):
         # visibility for each days
@@ -1146,7 +1147,7 @@ class data_shows():
         day_vis = t.fetchall()[0]
 
         for i in range(1, len(day_vis)):
-            print(f"\n\nDAY {i-1}\n    Visibility: ", day_vis[i])
+            print(f"\n\nDAY {i - 1}\n    Visibility: ", day_vis[i])
 
     def shows_pres(self, p_id):
         # air pressure for each days
@@ -1155,7 +1156,7 @@ class data_shows():
         day_pres = t.fetchall()[0]
 
         for i in range(1, len(day_pres)):
-            print(f"\n\nDAY {i-1}\n    Air Pressure: ", day_pres[i])
+            print(f"\n\nDAY {i - 1}\n    Air Pressure: ", day_pres[i])
 
     def shows_cloud(self, p_id):
         # cloud cover for each days
@@ -1164,7 +1165,7 @@ class data_shows():
         day_cloud = t.fetchall()[0]
 
         for i in range(1, len(day_cloud)):
-            print(f"\n\nDAY {i-1}\n    Cloud Cover: ", day_cloud[i])
+            print(f"\n\nDAY {i - 1}\n    Cloud Cover: ", day_cloud[i])
 
     def shows_cities(self, p_id):
         # the weather details for each cities in each days
@@ -1654,24 +1655,24 @@ class report():
 
                 if large / 6 > 0.5:
                     print(f"""It seems temperature changes huge in city '{name}' than in place '{place_name}'
-{x[0]*100}% of days temperature changes larger in city '{name}' than in place '{place_name}'
-{x[1]*100}% of days temperature changes less in city '{name}' than in place '{place_name}'
-{x[2]*100}% of days temperature changes same in city '{name}' and in place '{place_name}'""")
+{x[0] * 100}% of days temperature changes larger in city '{name}' than in place '{place_name}'
+{x[1] * 100}% of days temperature changes less in city '{name}' than in place '{place_name}'
+{x[2] * 100}% of days temperature changes same in city '{name}' and in place '{place_name}'""")
                 elif small / 6 > 0.5:
                     print(f"""It seems temperature changes less in city '{name}' than in place '{place_name}'
-{x[0]*100}% of days temperature changes larger in city '{name}' than in place '{place_name}'
-{x[1]*100}% of days temperature changes less in city '{name}' than in place '{place_name}'
-{x[2]*100}% of days temperature changes same in city '{name}' and in place '{place_name}'""")
+{x[0] * 100}% of days temperature changes larger in city '{name}' than in place '{place_name}'
+{x[1] * 100}% of days temperature changes less in city '{name}' than in place '{place_name}'
+{x[2] * 100}% of days temperature changes same in city '{name}' and in place '{place_name}'""")
                 elif draw / 6 > 0.5:
                     print(f"""It seems temperature difference are the same in city '{name}' and in place '{place_name}'
-{x[0]*100}% of days temperature changes larger in city '{name}' than in place '{place_name}'
-{x[1]*100}% of days temperature changes less in city '{name}' than in place '{place_name}'
-{x[2]*100}% of days temperature changes same in city '{name}' and in place '{place_name}'""")
+{x[0] * 100}% of days temperature changes larger in city '{name}' than in place '{place_name}'
+{x[1] * 100}% of days temperature changes less in city '{name}' than in place '{place_name}'
+{x[2] * 100}% of days temperature changes same in city '{name}' and in place '{place_name}'""")
                 else:
                     print(f"""It seems temperature difference are dynamic in city '{name}' and in place '{place_name}'
-{x[0]*100}% of days temperature changes larger in city '{name}' than in place '{place_name}'
-{x[1]*100}% of days temperature changes less in city '{name}' than in place '{place_name}'
-{x[2]*100}% of days temperature changes same in city '{name}' and in place '{place_name}'""")
+{x[0] * 100}% of days temperature changes larger in city '{name}' than in place '{place_name}'
+{x[1] * 100}% of days temperature changes less in city '{name}' than in place '{place_name}'
+{x[2] * 100}% of days temperature changes same in city '{name}' and in place '{place_name}'""")
 
     def temp_lati_longi(self):
 
@@ -1978,3 +1979,23 @@ if __name__ == '__main__':
             up.choose_partern()
     else:
         print("Not available Parameter")
+
+
+def main():
+    conn = sqlite3.connect("weather.db")
+    c = conn.cursor()
+
+    try:
+        c.execute('''SELECT * FROM TRAVEL''')
+        c.fetchall()
+    except:
+        print("""\n\n################## Error: No Database Detected #######################""")
+
+        print(
+            """\n\n################## Please download the database "weather.db" from github: https://github.com/xielidawan/Inf510_project.git #######################""")
+
+        print("""\n\n################## System Closed #######################""")
+
+    else:
+        up = user_part()
+        up.choose_partern()
