@@ -1756,7 +1756,7 @@ class report():
         plt.subplot(111)
         plt.title(f"Temperature Difference Graph for Cities")
 
-        plt.scatter(c_lat, c_log, s=c_avg_diff_temp, alpha=0.5, c=woeid)
+        plt.scatter(c_lat, c_log, s=c_avg_diff_temp, alpha=0.5, c='g')
         plt.show()
 
         # combine
@@ -1853,7 +1853,7 @@ At the same time, it seems like the Places in the southwest get some huge temper
         plt.subplot(111)
         plt.title(f"Average Wind Speed Graph for Cities")
 
-        plt.scatter(c_lat, c_log, s=c_avg_wind_speed, alpha=0.5, c=woeid)
+        plt.scatter(c_lat, c_log, s=c_avg_wind_speed, alpha=0.5, c='g')
         plt.show()
 
         # combine
