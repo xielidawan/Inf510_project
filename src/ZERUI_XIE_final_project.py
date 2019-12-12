@@ -11,6 +11,7 @@ import sqlite3
 import matplotlib.pyplot as plt
 import argparse
 import time
+import os
 
 
 ######################################### Data Getting and Management Part ##############################################
@@ -22,7 +23,7 @@ import time
 class travel():
 
     def __init__(self):
-        self.conn = sqlite3.connect("weather.db")
+        self.conn = sqlite3.connect(os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\data\weather.db")
         self.c = self.conn.cursor()
         self.travel_data = {}
 
@@ -101,7 +102,7 @@ class travel():
 class location():
 
     def __init__(self):
-        self.conn = sqlite3.connect("weather.db")
+        self.conn = sqlite3.connect(os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\data\weather.db")
         self.c = self.conn.cursor()
 
     def create_data_base(self):
@@ -178,7 +179,7 @@ class location():
 class near_city():
 
     def __init__(self):
-        self.conn = sqlite3.connect("weather.db")
+        self.conn = sqlite3.connect(os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\data\weather.db")
         self.c = self.conn.cursor()
 
     def create_data_base(self):
@@ -286,7 +287,7 @@ class near_city():
 class weather_of_cities():
 
     def __init__(self):
-        self.conn = sqlite3.connect("weather.db")
+        self.conn = sqlite3.connect(os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\data\weather.db")
         self.c = self.conn.cursor()
 
     def create_data_base(self):
@@ -608,7 +609,7 @@ class weather_of_cities():
 class weather_of_places():
 
     def __init__(self):
-        self.conn = sqlite3.connect("weather.db")
+        self.conn = sqlite3.connect(os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\data\weather.db")
         self.c = self.conn.cursor()
 
     def create_data_base(self):
@@ -1077,7 +1078,7 @@ class data_shows():
 
     def __init__(self):
         # self.up = user_part()
-        self.conn = sqlite3.connect("weather.db")
+        self.conn = sqlite3.connect(os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\data\weather.db")
         self.c = self.conn.cursor()
 
     def shows_all(self, p_id):
@@ -1298,7 +1299,7 @@ class user_part():
 
     def __init__(self):
 
-        self.conn = sqlite3.connect("weather.db")
+        self.conn = sqlite3.connect(os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\data\weather.db")
         self.c = self.conn.cursor()
         self.ds = data_shows()
         print("##################### Thanks for using this product! #######################")
@@ -1535,7 +1536,7 @@ class user_part():
 class report():
     def __init__(self):
 
-        self.conn = sqlite3.connect("weather.db")
+        self.conn = sqlite3.connect(os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\data\weather.db")
         self.c = self.conn.cursor()
 
     def temp_diff(self):
@@ -1715,7 +1716,9 @@ class report():
         plt.subplot(111)
         plt.title(f"Temperature Difference Graph for Places")
 
-        plt.scatter(p_lat, p_log, s=p_avg_diff_temp, alpha=0.5, c=p_id)
+        plt.scatter(p_log, p_lat, s=p_avg_diff_temp, alpha=0.5, c=p_id)
+        plt.xlabel('longitude')
+        plt.ylabel('latitude')
         plt.show()
 
         # cities data
@@ -1756,7 +1759,9 @@ class report():
         plt.subplot(111)
         plt.title(f"Temperature Difference Graph for Cities")
 
-        plt.scatter(c_lat, c_log, s=c_avg_diff_temp, alpha=0.5, c='g')
+        plt.scatter(c_log, c_lat, s=c_avg_diff_temp, alpha=0.5, c='g')
+        plt.xlabel('longitude')
+        plt.ylabel('latitude')
         plt.show()
 
         # combine
@@ -1766,13 +1771,15 @@ class report():
         plt.subplot(111)
         plt.title(f"Temperature Difference Graph for Combine")
 
-        plt.scatter(c_lat, c_log, label='Cities', s=c_avg_diff_temp, alpha=0.5, c='r')
-        plt.scatter(p_lat, p_log, label='Places', s=p_avg_diff_temp, alpha=0.5, c='b')
+        plt.scatter(c_log, c_lat, label='Cities', s=c_avg_diff_temp, alpha=0.5, c='r')
+        plt.scatter(p_log, p_lat, label='Places', s=p_avg_diff_temp, alpha=0.5, c='b')
+        plt.xlabel('longitude')
+        plt.ylabel('latitude')
         plt.legend()
         plt.show()
 
-        print("""######### Conclusion: It seems that the temperature difference are mostly large in the nature places than in the cites.
-At the same time, it seems like the Places in the southwest get some huge temperature change, and cities which are in the middle have the huge change.""")
+        print("""######### Conclusion: It seems that the temperature difference is mostly large in natural scenery than in the cites.
+At the same time, it seems like the natural scenery and cities in the southwest and the middle get some huge temperature change.""")
 
     def wind_lat_log(self):
 
@@ -1813,7 +1820,9 @@ At the same time, it seems like the Places in the southwest get some huge temper
         plt.subplot(111)
         plt.title(f"Average Wind Speed Graph for Places")
 
-        plt.scatter(p_lat, p_log, s=p_avg_wind_speed, alpha=0.5, c=p_id)
+        plt.scatter(p_log, p_lat, s=p_avg_wind_speed, alpha=0.5, c=p_id)
+        plt.xlabel('longitude')
+        plt.ylabel('latitude')
         plt.show()
 
         # cities data
@@ -1853,7 +1862,9 @@ At the same time, it seems like the Places in the southwest get some huge temper
         plt.subplot(111)
         plt.title(f"Average Wind Speed Graph for Cities")
 
-        plt.scatter(c_lat, c_log, s=c_avg_wind_speed, alpha=0.5, c='g')
+        plt.scatter(c_log, c_lat, s=c_avg_wind_speed, alpha=0.5, c='g')
+        plt.xlabel('longitude')
+        plt.ylabel('latitude')
         plt.show()
 
         # combine
@@ -1863,13 +1874,17 @@ At the same time, it seems like the Places in the southwest get some huge temper
         plt.subplot(111)
         plt.title(f"Average Wind Speed Graph for Combine")
 
-        plt.scatter(c_lat, c_log, label='Cities', s=c_avg_wind_speed, alpha=0.5, c='r')
-        plt.scatter(p_lat, p_log, label='Places', s=p_avg_wind_speed, alpha=0.5, c='b')
+        plt.scatter(c_log, c_lat, label='Cities', s=c_avg_wind_speed, alpha=0.5, c='r')
+        plt.scatter(p_log, p_lat, label='Places', s=p_avg_wind_speed, alpha=0.5, c='b')
+        plt.xlabel('longitude')
+        plt.ylabel('latitude')
         plt.legend()
         plt.show()
 
         print(
-            """########  Conclusion : It seems that the wind speed are larger on the around sides than in the middle.""")
+            """########  Conclusion : It seems that the average wind speed no huge difference depends on the location, 
+but the location still has some effect on wind speed; coastline places have faster wind speeds. Also, the wind speed
+is faster in the natural scenery than in the cities.""")
 
 
 def parse_args():
@@ -1919,7 +1934,7 @@ if __name__ == '__main__':
         up = user_part()
         up.choose_partern()
     elif args.local:
-        conn = sqlite3.connect("weather.db")
+        conn = sqlite3.connect(os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\data\weather.db")
         c = conn.cursor()
 
         try:
@@ -1982,7 +1997,7 @@ if __name__ == '__main__':
 
 
 def main():
-    conn = sqlite3.connect("weather.db")
+    conn = sqlite3.connect(os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\data\weather.db")
     c = conn.cursor()
 
     try:
